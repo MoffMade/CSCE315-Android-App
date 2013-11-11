@@ -18,4 +18,13 @@
     </style>
     <color name="main_menu_text_color">#FFFFFF</color>
 
+    <style name="load_game_spinner_theme" parent="@android:Theme">
+        <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
+    </style>
+
+    <style name="SpinnerItem" parent="@android:style/Widget.TextView.SpinnerItem">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    
 </resources>

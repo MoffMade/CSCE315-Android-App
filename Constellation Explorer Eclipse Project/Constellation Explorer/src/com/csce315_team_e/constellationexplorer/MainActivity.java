@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
     	startActivity(intent);
     }
   //called when new game button is clicked
-   /* public void openGameActivity(View view){
+   /* public void openStarMapActivity(View view){
     	Intent intent = new Intent(this, GameActivity.class);
     	startActivity(intent);
     } */

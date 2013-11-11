@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;Constellation Explorer&apos;" deleteContents="false" description="Delete resource &apos;Constellation Explorer&apos;" element1="/Constellation Explorer" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1384180353749"/>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Constellation Explorer&apos;" deleteContents="false" description="Delete resource &apos;Constellation Explorer&apos;" element1="/Constellation Explorer" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1384180353749"/>&#x0A;<refactoring comment="Delete resource &apos;ConstellationExplorer&apos;" deleteContents="false" description="Delete resource &apos;ConstellationExplorer&apos;" element1="/ConstellationExplorer" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1384205990871"/>
 </session>

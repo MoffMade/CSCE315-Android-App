@@ -38,6 +38,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.csce315_team_e.constellationexplorer.MainActivity" />
         </activity>
+        <activity
+            android:name="com.csce315_team_e.constellationexplorer.StarMapActivity"
+            android:label="@string/title_activity_star_map"
+            android:parentActivityName="com.csce315_team_e.constellationexplorer.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.csce315_team_e.constellationexplorer.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.csce315_team_e.constellationexplorer.GameActivity"
+            android:label="@string/title_activity_game"
+            android:parentActivityName="com.csce315_team_e.constellationexplorer.StarMapActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.csce315_team_e.constellationexplorer.StarMapActivity" />
+        </activity>
+        <activity
+            android:name="com.csce315_team_e.constellationexplorer.StarDataActivity"
+            android:label="@string/title_activity_star_data"
+            android:parentActivityName="com.csce315_team_e.constellationexplorer.StarMapActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.csce315_team_e.constellationexplorer.StarMapActivity" />
+        </activity>
     </application>
 
 </manifest>

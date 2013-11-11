@@ -2,8 +2,10 @@ package com.csce315_team_e.constellationexplorer;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.support.v4.app.NavUtils;
 
 public class HelpActivity extends Activity {
@@ -48,5 +50,10 @@ public class HelpActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public void returnToMainActivity(View view){
+	    	Intent intent = new Intent(this, MainActivity.class);
+	    	startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+    }
 
 }

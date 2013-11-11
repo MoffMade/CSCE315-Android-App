@@ -40,7 +40,7 @@
         android:layout_marginTop="137dp"
         android:text="@string/new_game_button"
         android:textColor="@color/main_menu_text_color"
-        android:onClick="openGameActivity"  />title_activity_help
+        android:onClick="openGameActivity"  />
 
     <TextView
         android:id="@+id/textView1"

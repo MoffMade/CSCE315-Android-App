@@ -33,31 +33,45 @@ public final class R {
     public static final class id {
         public static final int action_settings=0x7f0a0005;
         public static final int button1=0x7f0a0000;
-        public static final int button2=0x7f0a0002;
-        public static final int button3=0x7f0a0003;
+        public static final int button2=0x7f0a0003;
+        public static final int button3=0x7f0a0004;
         public static final int spinner1=0x7f0a0001;
-        public static final int textView1=0x7f0a0004;
+        public static final int textView1=0x7f0a0002;
     }
     public static final class layout {
-        public static final int activity_help=0x7f030000;
-        public static final int activity_load_game=0x7f030001;
-        public static final int activity_main=0x7f030002;
+        public static final int activity_game=0x7f030000;
+        public static final int activity_help=0x7f030001;
+        public static final int activity_load_game=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int activity_star_data=0x7f030004;
+        public static final int activity_star_map=0x7f030005;
+        public static final int spinner_item=0x7f030006;
     }
     public static final class menu {
-        public static final int help=0x7f090000;
-        public static final int load_game=0x7f090001;
-        public static final int main=0x7f090002;
+        public static final int game=0x7f090000;
+        public static final int help=0x7f090001;
+        public static final int load_game=0x7f090002;
+        public static final int main=0x7f090003;
+        public static final int star_data=0x7f090004;
+        public static final int star_map=0x7f090005;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int hello_world=0x7f05000d;
         public static final int help_button=0x7f050004;
         public static final int help_return_button=0x7f050005;
         public static final int help_text=0x7f050007;
+        public static final int load_game_back=0x7f05000a;
         public static final int load_game_button=0x7f050003;
+        public static final int load_game_helper_text=0x7f050009;
+        public static final int load_game_select=0x7f05000b;
         public static final int new_game_button=0x7f050002;
+        public static final int title_activity_game=0x7f05000e;
         public static final int title_activity_help=0x7f050008;
         public static final int title_activity_load_game=0x7f050006;
+        public static final int title_activity_star_data=0x7f05000f;
+        public static final int title_activity_star_map=0x7f05000c;
     }
     public static final class style {
         /** 
@@ -86,5 +100,7 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
+        public static final int SpinnerItem=0x7f070003;
+        public static final int load_game_spinner_theme=0x7f070002;
     }
 }

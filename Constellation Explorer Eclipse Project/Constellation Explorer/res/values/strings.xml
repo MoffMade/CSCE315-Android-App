@@ -14,7 +14,15 @@
         <item>Game 2</item>
         <item>Game 3</item>
     </string-array>
-    <string name="help_text">TEST TEXT FOR HELP MENU</string>
+
+    <string name="help_text">TEST TEXT FOR HELP MENU\n\n*Use Buttons to navigate\n\n\nAuthors: CSCE315 Team E</string>
     <string name="title_activity_help">Help</string>
+    <string name="load_game_helper_text">Tap to select the Game you wish to load:</string>
+    <string name="load_game_back">Go Back to Main Menu</string>
+    <string name="load_game_select">Start Selected Game</string>
+    <string name="title_activity_star_map">Star Map</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_game">Game</string>
+    <string name="title_activity_star_data">Star Data</string>
 
 </resources>
