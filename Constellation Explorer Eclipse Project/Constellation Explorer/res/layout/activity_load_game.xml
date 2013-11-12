@@ -37,7 +37,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="@string/load_game_select"
-        android:textColor="@color/main_menu_text_color" />
+        android:textColor="@color/main_menu_text_color"
+        android:onClick="openStarMapActivity" />
 
     <Button
         android:id="@+id/button2"

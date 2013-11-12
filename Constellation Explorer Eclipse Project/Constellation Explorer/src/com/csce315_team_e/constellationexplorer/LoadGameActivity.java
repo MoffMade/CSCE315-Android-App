@@ -63,11 +63,11 @@ public class LoadGameActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	public void openStarMapActivity(View view){
-    	Intent intent = new Intent(this, HelpActivity.class);
+    	Intent intent = new Intent(this, StarMapActivity.class);
     	startActivity(intent);
     }
 	public void returnToMainActivity(View view){
     	Intent intent = new Intent(this, MainActivity.class);
     	startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-}
+	}
 }

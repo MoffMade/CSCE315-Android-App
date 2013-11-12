@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Constellation Explorer</string>
+    <string name="action_settings">Settings</string>
+    <string name="new_game_button">Start New Game</string>
+    <string name="load_game_button">Load Game</string>
+    <string name="help_button">Help</string>
+    <string name="help_return_button">Back to Main Menu</string>
+    <string name="title_activity_load_game">Load Game</string>
+
+    <string-array name="saved_game_list">
+        <item>Game 1</item>
+        <item>Game 2</item>
+        <item>Game 3</item>
+    </string-array>
+
+    <string name="help_text">TEST TEXT FOR HELP MENU\n\n*Use Buttons to navigate\n\n\nAuthors: CSCE315 Team E</string>
+    <string name="title_activity_help">Help</string>
+    <string name="load_game_helper_text">Tap to select the Game you wish to load:</string>
+    <string name="load_game_back">Go Back to Main Menu</string>
+    <string name="load_game_select">Start Selected Game</string>
+    <string name="title_activity_star_map">Star Map</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_game">Game</string>
+    <string name="title_activity_star_data">Star Data</string>
+    <string name="quit_button">Quit to Menu</string>
+    <string name="save_button">Save Progress</string>
+    <string name="move_left_button">Move Left!</string>
+    <string name="move_right_button">Move Right!</string>
+	<string name="constellation">Constellation</string>
+	<string name="right_ascension">Right Ascension</string>
+	<string name="declination">Declination</string>
+	<string name="magnitude">Apparent Magnitude</string>
+	<string name="distance">Distance</string>
+</resources>

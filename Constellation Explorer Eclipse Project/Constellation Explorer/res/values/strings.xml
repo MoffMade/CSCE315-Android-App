@@ -24,5 +24,15 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_game">Game</string>
     <string name="title_activity_star_data">Star Data</string>
-
+    <string name="quit_button">Quit to Menu</string>
+    <string name="save_button">Save Progress</string>
+    <string name="move_left_button">Move Left!</string>
+    <string name="move_right_button">Move Right!</string>
+	<string name="constellation_tag">Constellation:	</string>
+	<string name="right_ascension_tag">Right Ascension: </string>
+	<string name="declination_tag">Declination: </string>
+	<string name="magnitude_tag">Apparent Magnitude:	 </string>
+	<string name="distance_tag">Distance: </string>
+	<string name="star_name_tag">Star Name: </string>
+	<string name="back_to_star_map">Back to Star Map</string>
 </resources>

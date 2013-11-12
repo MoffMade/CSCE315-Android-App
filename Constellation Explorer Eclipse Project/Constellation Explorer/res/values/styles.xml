@@ -17,7 +17,7 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     <color name="main_menu_text_color">#FFFFFF</color>
-
+	<color name="black">#000000</color>
     <style name="load_game_spinner_theme" parent="@android:Theme">
         <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
     </style>

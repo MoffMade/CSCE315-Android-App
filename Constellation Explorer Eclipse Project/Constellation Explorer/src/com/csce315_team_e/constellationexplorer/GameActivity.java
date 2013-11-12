@@ -2,8 +2,10 @@ package com.csce315_team_e.constellationexplorer;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.support.v4.app.NavUtils;
 
 public class GameActivity extends Activity {
@@ -49,4 +51,8 @@ public class GameActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	public void goToStarData(View view){
+    	Intent intent = new Intent(this, StarDataActivity.class);
+    	startActivity(intent);
+    }
 }

@@ -2,8 +2,10 @@ package com.csce315_team_e.constellationexplorer;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.support.v4.app.NavUtils;
 
 public class StarDataActivity extends Activity {
@@ -48,5 +50,8 @@ public class StarDataActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
+	public void openStarMap(View view){
+    	Intent intent = new Intent(this, StarMapActivity.class);
+    	startActivity(intent);
+    }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item>
+		<request>Segin</request>
+		<status>0</status>
+		<verbiage>OK</verbiage>
+		<object id="S454">
+			<type id="1">Star</type>
+			<name>ε Cas</name>
+			<catId>ε Cas</catId>
+			<constellation id="14">Cassiopeia</constellation>
+			<ra unit="hour">1.9065833</ra>
+			<de unit="degree">63.67</de>
+			<mag>3.38</mag>
+		</object>
+	</item>
+</resources>

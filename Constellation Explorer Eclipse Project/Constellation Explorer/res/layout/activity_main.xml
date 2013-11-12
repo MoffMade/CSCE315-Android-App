@@ -29,7 +29,7 @@
         android:layout_below="@+id/button2"
         android:text="@string/help_button"
         android:textColor="@color/main_menu_text_color"
-        android:onClick="openHelpGameActivity" />
+        android:onClick="openHelpActivity" />
 
     <Button
         android:id="@+id/button1"
@@ -40,7 +40,7 @@
         android:layout_marginTop="137dp"
         android:text="@string/new_game_button"
         android:textColor="@color/main_menu_text_color"
-        android:onClick="openGameActivity"  />
+        android:onClick="openStarMapActivity"  />
 
     <TextView
         android:id="@+id/textView1"
