@@ -20,19 +20,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 
-class Star {
-	public String star_id;
-	public String star_type;
-	public String name;
-	public String catID;
-	public String constellation;
-	public int constellationID;
-	public double ra;
-	public double de;
-	public double mag;
-	
-	
-}
 public class XMLParser {
 	
 	private final String searchStarURL = "http://server1.sky-map.org/search?star=";
@@ -67,18 +54,17 @@ public class XMLParser {
 		return xml;
 	}
 	
-	public ArrayList<Star> getStarInfo(String star_name) throws XmlPullParserException {
+	public Star getStarInfo(String star_name) throws XmlPullParserException {
 		
 		String url = searchStarURL + star_name;
 		String star_data;
 		
-		ArrayList<Star> star_list = new ArrayList<Star>();
+		Star star = new Star();
 
 		
 		//retrieve the XML String from searching on server
 		star_data = retrieveXMLFromURL(url);
 
-		Star star = null;
 		try {
 			
 			//Parsing the returned xml string from server
@@ -104,50 +90,50 @@ public class XMLParser {
 							if (xpp.nextText().equals("-1")) {
 								//getting error response from server
 								//handling error
+								return null;
 							}
 						}
 						
 						//if tag is object
 						if (tagName.equals("object")) {
-							star = new Star();
-							star.star_id = xpp.getAttributeValue(null,"id");
+							star.setStarID(xpp.getAttributeValue(null,"id"));
 						}
 						//if tag is type
 						else if (tagName.equals("type")){
-							star.star_type = xpp.nextText();
+							star.setStarType(xpp.nextText());
 						}
 						//if tag is name
 						else if (tagName.equals("name")) {
-							star.name = xpp.nextText();
+							star.setStarName(xpp.nextText());
 						}
 						//if tag is catID
 						else if (tagName.equals("catID")) {
-							star.catID = xpp.nextText();
+							star.setStarCatID(xpp.nextText());
 						}
 						//if tag is constellation
 						else if (tagName.equals("constellation")) {
-							star.constellationID = Integer.parseInt(xpp.getAttributeValue(null, "id"));
-							star.constellation = xpp.nextText();
+							star.setStarConstellationID(Integer.parseInt(xpp.getAttributeValue(null, "id")));
+							star.setStarConstellation(xpp.nextText());
 						}
 						//if tag is ra
 						else if (tagName.equals("ra")) {
-							star.ra = Double.parseDouble(xpp.nextText());
+							star.setRa(Double.parseDouble(xpp.nextText()));
 						}
 						//if tag is de
 						else if (tagName.equals("de")) {
-							star.de = Double.parseDouble(xpp.nextText());
+							star.setDe(Double.parseDouble(xpp.nextText()));
 						}
 						//if tag is mag
 						else if (tagName.equals("mag")) {
-							star.mag = Double.parseDouble(xpp.nextText());
+							star.setMag(Double.parseDouble(xpp.nextText()));
 						}	
 						break;
 					
 					case XmlPullParser.END_TAG:
 						tagName = xpp.getName();
 						if (tagName.equals("object") && star != null) {
-							//add the star to the lsit
-							star_list.add(star);
+							//return star 
+							return star;
 						}
 						break;
 				} 
@@ -161,8 +147,8 @@ public class XMLParser {
 			star = null;
 		}
 		
-		
-		return star_list;
+		return null;
+		//return star_list;
 	}
 	
 	
