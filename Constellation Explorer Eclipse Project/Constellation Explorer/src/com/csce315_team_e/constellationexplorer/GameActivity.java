@@ -1,5 +1,8 @@
 package com.csce315_team_e.constellationexplorer;
 
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -10,10 +13,13 @@ import android.support.v4.app.NavUtils;
 
 public class GameActivity extends Activity {
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_game);
+		setContentView(new GameView(this));
+		
+		//setContentView(R.layout.activity_game);
 		// Show the Up button in the action bar.
 		setupActionBar();
 	}
