@@ -23,7 +23,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/star_name_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/star_name_tag"
@@ -31,10 +31,10 @@
                 android:textColor="@color/main_menu_text_color" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/name_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Segin"
+                android:text="@string/name_value"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/main_menu_text_color" />
 
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/constellation_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/constellation_tag"
@@ -54,22 +54,46 @@
                 android:textColor="@color/main_menu_text_color" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/constellation_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cassiopeia"
+                android:text="@string/constellation_value"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/main_menu_text_color" />
 
         </TableRow>
+        
+       <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
+            <TextView
+                android:id="@+id/catId_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/catId_tag"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/main_menu_text_color" />
+
+            <TextView
+                android:id="@+id/catId_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/catId_value"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/main_menu_text_color" />
+
+        </TableRow>
+        
+        
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/ra_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/right_ascension_tag"
@@ -77,10 +101,10 @@
                 android:textColor="@color/main_menu_text_color" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/ra_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="01h 54m 23.70s"
+                android:text="@string/ra_value"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/main_menu_text_color" />
 
@@ -92,7 +116,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/de_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/declination_tag"
@@ -100,10 +124,10 @@
                 android:textColor="@color/main_menu_text_color" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/de_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="63Ad 40m 12.0s"
+                android:text="@string/de_value"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/main_menu_text_color" />
 
@@ -115,7 +139,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/mag_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/magnitude_tag"
@@ -123,37 +147,16 @@
                 android:textColor="@color/main_menu_text_color" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/mag_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3.38"
+                android:text="@string/mag_value"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/main_menu_text_color" />
 
         </TableRow>
         
-        <TableRow
-            android:id="@+id/tableRow5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/distance_tag"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/main_menu_text_color" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="135.501 parsecs"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/main_menu_text_color" />
-
-        </TableRow>
+ 
 
     </TableLayout>
 

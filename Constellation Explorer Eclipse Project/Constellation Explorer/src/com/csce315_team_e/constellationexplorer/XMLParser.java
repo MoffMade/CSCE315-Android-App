@@ -6,21 +6,29 @@ package com.csce315_team_e.constellationexplorer;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.io.StringReader;
-import java.util.ArrayList;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import android.os.AsyncTask;
+import android.util.Log;
 
-public class XMLParser {
+
+public class XMLParser extends AsyncTask<String, Void, String> {
 	
 	private final String searchStarURL = "http://server1.sky-map.org/search?star=";
 	
@@ -29,19 +37,35 @@ public class XMLParser {
 	}
 	
 	
-	private String retrieveXMLFromURL(String url) {
+	protected String doInBackground(String... url) {
 		String xml = null;
 		
 		try {
+			Log.i("XML Parser","CHECK POINT 3");
+
+			HttpGet uri = new HttpGet(url[0]);    
+			Log.i("XML Parser link",url[0]);
+
+			DefaultHttpClient client = new DefaultHttpClient();
+			Log.i("XML Parser","CHECK POINT 3.4");
 			
-			DefaultHttpClient httpClient = new DefaultHttpClient();
-			HttpPost httpPost = new HttpPost(url);
-			
-			HttpResponse response = httpClient.execute(httpPost);
-			HttpEntity httpEntity = response.getEntity();
-			
-			xml = EntityUtils.toString(httpEntity);
-		
+			HttpParams httpParameters = uri.getParams();
+	        // Set the timeout in milliseconds until a connection is established.
+	        int timeoutConnection = 150000;
+	        HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
+	        // Set the default socket timeout (SO_TIMEOUT) 
+	        // in milliseconds which is the timeout for waiting for data.
+	        int timeoutSocket = 150000;
+	        HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
+	        
+
+			HttpResponse response = client.execute(uri);
+			Log.i("XML Parser","CHECK POINT 3.5");
+
+			xml = EntityUtils.toString(response.getEntity());
+			Log.i("XML Parser","CHECK POINT 3.9");
+			Log.i("XML STRING",xml);
+
 			
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace(); 
@@ -56,19 +80,16 @@ public class XMLParser {
 	
 	public Star getStarInfo(String star_name) throws XmlPullParserException {
 		
-		String url = searchStarURL + star_name;
 		String star_data;
 		
 		Star star = new Star();
 
-		
-		//retrieve the XML String from searching on server
-		star_data = retrieveXMLFromURL(url);
+		String urlString = searchStarURL + star_name;
 
 		try {
 			
 			//Parsing the returned xml string from server
-			
+			star_data = doInBackground(urlString);
 			XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 			factory.setNamespaceAware(true);
 			XmlPullParser xpp = factory.newPullParser();
@@ -103,29 +124,29 @@ public class XMLParser {
 							star.setStarType(xpp.nextText());
 						}
 						//if tag is name
-						else if (tagName.equals("name")) {
+						else if (tagName.equals("request")) {
 							star.setStarName(xpp.nextText());
 						}
 						//if tag is catID
-						else if (tagName.equals("catID")) {
+						else if (tagName.equals("catId")) {
 							star.setStarCatID(xpp.nextText());
 						}
 						//if tag is constellation
 						else if (tagName.equals("constellation")) {
-							star.setStarConstellationID(Integer.parseInt(xpp.getAttributeValue(null, "id")));
+							star.setStarConstellationID(xpp.getAttributeValue(null, "id"));
 							star.setStarConstellation(xpp.nextText());
 						}
 						//if tag is ra
 						else if (tagName.equals("ra")) {
-							star.setRa(Double.parseDouble(xpp.nextText()));
+							star.setRa(xpp.nextText());
 						}
 						//if tag is de
 						else if (tagName.equals("de")) {
-							star.setDe(Double.parseDouble(xpp.nextText()));
+							star.setDe(xpp.nextText());
 						}
 						//if tag is mag
 						else if (tagName.equals("mag")) {
-							star.setMag(Double.parseDouble(xpp.nextText()));
+							star.setMag(xpp.nextText());
 						}	
 						break;
 					

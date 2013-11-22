@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.csce315_team_e.constellationexplorer"
+<manifest package="com.csce315_team_e.constellationexplorer"
     android:versionCode="1"
-    android:versionName="1.0" >
-
+    android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+ 	
+ 	<uses-permission android:name="android.permission.INTERNET" />
+    
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
-
     <application
+        android:name="Star"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -29,6 +30,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.csce315_team_e.constellationexplorer.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.csce315_team_e.constellationexplorer.SaveGameActivity"
+            android:label="@string/title_activity_Save_game"
+            android:parentActivityName="com.csce315_team_e.constellationexplorer.StarMapActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.csce315_team_e.constellationexplorer.StarMapActivity" />
         </activity>
         <activity
             android:name="com.csce315_team_e.constellationexplorer.HelpActivity"

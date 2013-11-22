@@ -6,6 +6,7 @@ import android.media.SoundPool.OnLoadCompleteListener;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,15 +14,29 @@ import android.support.v4.app.NavUtils;
 
 public class GameActivity extends Activity {
 
-	
+	private Star star;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(new GameView(this));
 		
-		//setContentView(R.layout.activity_game);
+		//comment out R.layout.activity_game to test with starDatamap (showing star info after clicking Magic button)
+		
+		
+		//setContentView(new GameView(this));   //<---------
+		setContentView(R.layout.activity_game);  //<---------
+		
+		
+		
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		
+		Bundle data = getIntent().getExtras();
+		if (data != null) {
+		star = (Star) data.getParcelable("current_star");
+		
+		Log.i("GAME ACTIVITY",star.getStarName());
+		}
 	}
 
 	/**
@@ -59,6 +74,7 @@ public class GameActivity extends Activity {
 
 	public void goToStarData(View view){
     	Intent intent = new Intent(this, StarDataActivity.class);
+    	intent.putExtra("current_star", star);
     	startActivity(intent);
     }
 }

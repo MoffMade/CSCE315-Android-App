@@ -34,7 +34,8 @@
         android:layout_alignBottom="@+id/imageView1"
         android:layout_alignLeft="@+id/imageView1"
         android:text="@string/save_button"
-        android:textColor="@color/main_menu_text_color" />
+        android:textColor="@color/main_menu_text_color" 
+       	android:onClick="goToSaveGame"/>
 
     <Button
         android:id="@+id/button2"

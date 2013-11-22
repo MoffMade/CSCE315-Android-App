@@ -1,19 +1,25 @@
 package com.csce315_team_e.constellationexplorer;
 
-import android.app.Application;
 
-public class Star extends Application {
+import android.app.Application;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Star extends Application implements Parcelable {
 	
 	private String star_id;
 	private String star_type;
 	private String name;
 	private String catID;
 	private String constellation;
-	private int constellationID;
-	private double ra;
-	private double de;
-	private double mag;
+	private String constellationID;
+	private String ra;
+	private String de;
+	private String mag;
 	
+	public Star() {
+		
+	}
 	public String getStarID() {
 		return star_id;
 	}
@@ -29,16 +35,16 @@ public class Star extends Application {
 	public String getStarConstellation() {
 		return constellation;
 	}
-	public int getStarConstellationID() {
+	public String getStarConstellationID() {
 		return constellationID;
 	}
-	public double getRa() {
+	public String getRa() {
 		return ra;
 	}
-	public double getDe() {
+	public String getDe() {
 		return de;
 	}
-	public double getMag() {
+	public String getMag() {
 		return mag;
 	}
 	
@@ -57,17 +63,51 @@ public class Star extends Application {
 	public void setStarConstellation(String val) {
 		this.constellation = val;
 	}
-	public void setStarConstellationID(int val) {
+	public void setStarConstellationID(String val) {
 		this.constellationID = val;
 	}
-	public void setRa(double val) {
+	public void setRa(String val) {
 		this.ra = val;
 	}
-	public void setDe(double val) {
+	public void setDe(String val) {
 		this.de = val;
 	}
-	public void setMag(double val) {
+	public void setMag(String val) {
 		this.mag = val;
 	}
 
+	
+    public Star(Parcel in){
+        String[] data = new String[9];
+
+        in.readStringArray(data);
+        this.star_id = data[0];
+        this.star_type = data[1];
+        this.name = data[2];
+        this.catID = data[3];
+        this.constellation = data[4];
+        this.constellationID = data[5];
+        this.ra = data[6];
+        this.de = data[7];
+        this.mag = data[8];
+    }
+
+    public int describeContents(){
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeStringArray(new String[] {this.star_id, this.star_type, this.name, this.catID, this.constellation,
+                                            this.constellationID, this.ra, this.de,this.mag});
+    }
+    public static final Parcelable.Creator<Star> CREATOR = new Parcelable.Creator<Star>() {
+        public Star createFromParcel(Parcel in) {
+            return new Star(in); 
+        }
+
+        public Star[] newArray(int size) {
+            return new Star[size];
+        }
+    };
 }

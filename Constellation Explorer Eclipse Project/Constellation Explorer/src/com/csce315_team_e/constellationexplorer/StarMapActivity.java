@@ -1,17 +1,48 @@
 package com.csce315_team_e.constellationexplorer;
 
+import org.xmlpull.v1.XmlPullParserException;
+
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
 public class StarMapActivity extends Activity {
 
+	private Star star;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_star_map);
+		
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        
+		Bundle data = getIntent().getExtras();
+		if (data != null) {
+		star = (Star) data.getParcelable("current_star");
+		} else {
+			Log.i("INFO","DATA is NULL");
+			 XMLParser getData = new XMLParser();
+			try {
+				
+				/*
+				 * The list of stars will be generated here 
+				 * will add private ArrayList<Star> to store
+				 * 
+				 * retrieve star info by getData.getStarInfo(name of the star);
+				 */
+				star = getData.getStarInfo("polaris");
+			} catch (XmlPullParserException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 	@Override
@@ -28,6 +59,13 @@ public class StarMapActivity extends Activity {
 	
 	public void goToGame(View view){
     	Intent intent = new Intent(this, GameActivity.class);
+		intent.putExtra("current_star",star);
     	startActivity(intent);
 	}
+	public void goToSaveGame(View view) {
+		Intent intent = new Intent(this, SaveGameActivity.class);
+		intent.putExtra("current_star",star);
+		startActivity(intent);
+	}
+
 }

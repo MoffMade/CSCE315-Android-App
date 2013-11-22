@@ -1,0 +1,118 @@
+package com.csce315_team_e.constellationexplorer;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.StringWriter;
+
+import org.xmlpull.v1.XmlSerializer;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
+import android.util.Xml;
+import android.view.View;
+
+public class SaveGameActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        setContentView(R.layout.activity_save_game);
+        
+      /*
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);*/
+       
+		
+		//get current star from StarMapActivity
+		Bundle data = getIntent().getExtras();
+		
+		Star star = (Star) data.getParcelable("current_star");
+		
+		Log.i("STAR ID",star.getStarID());
+		Log.i("STAR NAME",star.getStarName());
+		
+        try {
+        	
+        	
+        	FileOutputStream saveFile = openFileOutput("saved_data", Context.MODE_APPEND);
+            XmlSerializer output = Xml.newSerializer();
+            StringWriter writer = new StringWriter();
+			Log.i("HAHAH","CHECK POINT 4");
+
+            output.setOutput(writer);
+            output.startTag(null,"saveData");
+            output.startTag(null,"object");
+            output.attribute(null,"id",star.getStarID());
+            
+            output.startTag(null,"type");
+            output.text(star.getStarType());
+            output.endTag(null, "type");
+            
+            output.startTag(null, "name");
+            output.text(star.getStarName());
+            output.endTag(null, "name");
+			Log.i("HAHAH","CHECK POINT 5.3");
+			//Log.i("Star CatID: ",star.getStarCatID());
+
+            output.startTag(null, "catId");
+            output.text(star.getStarCatID());
+            output.endTag(null, "catId");
+			Log.i("HAHAH","CHECK POINT 5.35");
+			
+            output.startTag(null, "constellation");
+            output.attribute(null,"id",star.getStarConstellationID());
+            output.text(star.getStarConstellation());
+            output.endTag(null, "constellation");
+			Log.i("HAHAH","CHECK POINT 5.38");
+
+            output.startTag(null, "ra");
+            output.attribute(null, "unit", "hour");
+            output.text(star.getRa());
+            output.endTag(null, "ra");
+			Log.i("HAHAH","CHECK POINT 5.4");
+
+            output.startTag(null, "de");
+            output.attribute(null, "unit", "degree");
+            output.text(star.getDe());
+            output.endTag(null, "de");
+            
+            output.startTag(null, "mag");
+            output.text(star.getMag());
+            output.endTag(null, "mag");
+            
+            output.endTag(null,"object");
+            output.endTag(null, "saveData");
+            
+            output.endDocument();
+            output.flush();
+			Log.i("HAHAH","CHECK POINT 5.5");
+
+            saveFile.write(writer.toString().getBytes());
+            saveFile.close();
+            
+			Log.i("HAHAH","CHECK POINT 6");
+
+        } catch (FileNotFoundException e) {
+        	e.printStackTrace();
+        } catch (IOException e) {
+        	e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+        	e.printStackTrace();
+        } catch (IllegalStateException e) {
+        	e.printStackTrace();
+        }
+        
+        //after saving, returning to MainActive
+    }
+	public void returnToMainActivity(View view){
+    	Intent intent = new Intent(this, StarMapActivity.class);
+    	startActivity(intent);
+	}
+    
+}

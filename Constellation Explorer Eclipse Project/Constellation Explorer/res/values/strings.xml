@@ -8,7 +8,7 @@
     <string name="help_button">Help</string>
     <string name="help_return_button">Back to Main Menu</string>
     <string name="title_activity_load_game">Load Game</string>
-
+	<string name="title_activity_Save_game">Save Game</string>
     <string-array name="saved_game_list">
         <item>Game 1</item>
         <item>Game 2</item>
@@ -20,6 +20,7 @@
     <string name="load_game_helper_text">Tap to select the Game you wish to load:</string>
     <string name="load_game_back">Go Back to Main Menu</string>
     <string name="load_game_select">Start Selected Game</string>
+    <string name="save_game_text"> Successfully Saved!</string>
     <string name="title_activity_star_map">Star Map</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_game">Game</string>
@@ -32,7 +33,15 @@
 	<string name="right_ascension_tag">Right Ascension: </string>
 	<string name="declination_tag">Declination: </string>
 	<string name="magnitude_tag">Apparent Magnitude:	 </string>
-	<string name="distance_tag">Distance: </string>
+	<string name="catId_tag">CatID: </string>
 	<string name="star_name_tag">Star Name: </string>
 	<string name="back_to_star_map">Back to Star Map</string>
+	
+	<string name="name_value"></string>
+	<string name="constellation_value"></string>
+	<string name="catId_value"></string>
+	<string name="de_value"></string>
+	<string name="ra_value"></string>
+	<string name="mag_value"></string>
+	
 </resources>

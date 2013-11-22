@@ -1,21 +1,57 @@
 package com.csce315_team_e.constellationexplorer;
 
+import org.xmlpull.v1.XmlPullParserException;
+
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 
 public class StarDataActivity extends Activity {
 
+	private Star star;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_star_data);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		Bundle data = getIntent().getExtras();
+		
+		if (data != null) {
+			star = (Star) data.getParcelable("current_star");
+
+			Log.i("STARDATA: ",star.getStarName());
+			//loading info to textviews
+			TextView newText = (TextView) findViewById(R.id.name_value);
+			newText.setText(star.getStarName());
+			
+			TextView newText2 = (TextView) findViewById(R.id.constellation_value);
+			newText2.setText(star.getStarConstellation());
+			
+			TextView newText3 = (TextView) findViewById(R.id.catId_value);
+			newText3.setText(star.getStarCatID());
+			
+			TextView newText4 = (TextView) findViewById(R.id.mag_value);
+			newText4.setText(star.getMag());
+			
+			TextView newText5 = (TextView) findViewById(R.id.ra_value);
+			newText5.setText(star.getRa());
+			
+			TextView newText6 = (TextView) findViewById(R.id.de_value);
+			newText6.setText(star.getDe());
+			
+			Log.i("STARDATA","Complete load star");
+				
+				
+			} 
 	}
 
 	/**
@@ -52,6 +88,7 @@ public class StarDataActivity extends Activity {
 	}
 	public void openStarMap(View view){
     	Intent intent = new Intent(this, StarMapActivity.class);
+    	intent.putExtra("current_star", star);
     	startActivity(intent);
     }
 }
