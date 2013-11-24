@@ -19,7 +19,10 @@ public class GameLoopThread extends Thread {
     @SuppressLint("WrongCall")
 	@Override
 	public void run() {
-		long ticksPS = 1000 / FPS;
+		long ticksPS = 1000 / FPS;  
+		/*each loop has to last at least 100 millisecs
+		 * which means the canvas is redrawn maximum 10 frames/sec
+		 * */
 		long startTime;
 		long sleepTime;
 		while (running) {
@@ -36,12 +39,12 @@ public class GameLoopThread extends Thread {
 				}
 			}
 			
-			sleepTime = ticksPS-(System.currentTimeMillis() - startTime);
+			sleepTime = ticksPS-(System.currentTimeMillis() - startTime); //time have to sleep
             try {
                    if (sleepTime > 0)
                           sleep(sleepTime);
                    else
-                          sleep(10);
+                          sleep(1);
             } catch (Exception e) {}
 		}// end while running
     }
