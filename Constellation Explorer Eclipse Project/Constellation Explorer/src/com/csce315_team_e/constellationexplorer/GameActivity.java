@@ -22,8 +22,8 @@ public class GameActivity extends Activity {
 		//comment out R.layout.activity_game to test with starDatamap (showing star info after clicking Magic button)
 		
 		
-		//setContentView(new GameView(this));   //<---------
-		setContentView(R.layout.activity_game);  //<---------
+		setContentView(new GameView(this));   //<---------
+		//setContentView(R.layout.activity_game);  //<---------
 		
 		
 		

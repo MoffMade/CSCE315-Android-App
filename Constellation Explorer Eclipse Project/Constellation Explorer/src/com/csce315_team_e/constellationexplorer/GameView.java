@@ -29,12 +29,15 @@ public class GameView extends SurfaceView {
 	private Bitmap rightBtn;
 	private Bitmap gameover;
 	private Bitmap missionComplete;
+	private Bitmap gotoStarData;
 	private SoundPool soundpool;
 	private int exlodeSoundID;
 	private int flyingSoundID;
-	Intent intent = new Intent(getContext(), StarDataActivity.class);
+	//Intent intent = new Intent(getContext(), StarDataActivity.class);
 	private int playtime = 500; 
-	private boolean endGame = false;
+	//private boolean endGame = false;
+	//private int WindowHeight;
+	//private int WindowWidth;
 	
 
 	@SuppressLint("WrongCall")
@@ -79,44 +82,60 @@ public class GameView extends SurfaceView {
 			}
 		});
 		
-		background = BitmapFactory.decodeResource(getResources(), R.drawable.outerspace );
+		
+		
+		background = BitmapFactory.decodeResource(getResources(), R.drawable.outerspace1 );
 		
 		spaceship = new ShipSprite(this, BitmapFactory.decodeResource(getResources(), R.drawable.spaceship ));
-		spaceship.setX(10);
-		//spaceship.setY(getHeight()-190);
-		spaceship.setY(500);
+		
+		//spaceship.setY(getHeight()-200);
+		
 		debris1 = new DebrisSprite(this, BitmapFactory.decodeResource(getResources(), R.drawable.debris1 ));
 		debris1.setX(10);
 		leftBtn = BitmapFactory.decodeResource(getResources(), R.drawable.left_btn );
 		rightBtn = BitmapFactory.decodeResource(getResources(), R.drawable.right_btn );
 		gameover = BitmapFactory.decodeResource(getResources(), R.drawable.gameover );
 		missionComplete = BitmapFactory.decodeResource(getResources(), R.drawable.mission_acomplished );
+		gotoStarData = BitmapFactory.decodeResource(getResources(), R.drawable.gotostardata );
 		soundpool = new SoundPool(5, AudioManager.STREAM_MUSIC,0);
+		
 		soundpool.setOnLoadCompleteListener(new OnLoadCompleteListener() {		
 
 			public void onLoadComplete(SoundPool soundpool, int sampleId, int status) {
 			}
-		});
+		}); // end of soundpoo.setOnLoadCompleteListener
+		
 		exlodeSoundID = soundpool.load(this.getContext(),R.raw.explosion,1);
 		flyingSoundID = soundpool.load(this.getContext(),R.raw.flying,1);
 		
 		
 			
 		/*debrises = new Vector<Sprite>();*/
-	}
+	}//end of GameView constructor
 
-	protected void startactivity(Intent intent) {
+	/*protected void startactivity(Intent intent) {
 		// TODO Auto-generated method stub
 		startactivity(intent);
-	}
+	}*/
 
 	@SuppressLint("WrongCall")
 	@Override
 	protected void onDraw(Canvas canvas) {
 		//soundpool.play(flyingSoundID, 5, 5, 1, -1, 1);
+		//WindowHeight = getHeight(); // 1038
+		//WindowWidth = getWidth(); // 768
+		
+		if(playtime == 500){ // do this only once at the beginning of the game
+			spaceship.setX(10);		
+			spaceship.setY(getHeight()- spaceship.height - leftBtn.getHeight() - 40);
+			
+		}
 		playtime--;
 		
+		
 		canvas.drawBitmap(background, 0,0, null);
+		//canvas.drawBitmap(gotoStarData, getWidth()/2 - gotoStarData.getWidth()/2, getHeight()/8, null);
+		canvas.drawBitmap(gotoStarData, getWidth()/2 - gotoStarData.getWidth()/2, 20, null);
 		
 		if(spaceship.timeExploded > 0){
 			spaceship.onDraw(canvas);
@@ -138,9 +157,10 @@ public class GameView extends SurfaceView {
 			
 			
 		}
-
-		canvas.drawBitmap(leftBtn, 30 , getHeight() - 70 , null);
-		canvas.drawBitmap(rightBtn, getWidth()-200 , getHeight() - 70 , null);
+		//draw left button
+		canvas.drawBitmap(leftBtn, 50 , getHeight() - rightBtn.getHeight() - 20  , null);
+		//draw right button
+		canvas.drawBitmap(rightBtn, getWidth() - rightBtn.getWidth() - 50 , getHeight() - rightBtn.getHeight() - 20 , null);
 		
 		
 		if(spaceship.isExploded()){
@@ -151,6 +171,9 @@ public class GameView extends SurfaceView {
 			}
 			if(spaceship.timeExploded == -12){						
 				gameLoopThread.setRunning(false);
+				
+				//intent.putExtra("current_star", star);
+				//startactivity(intent);
 				
 				//Intent intent = new Intent(getContext(), StarDataActivity.class);
 				//endGame = true;				
@@ -188,12 +211,18 @@ public class GameView extends SurfaceView {
 		float x = event.getX();
 		float y = event.getY();
 		if(!spaceship.isExploded()){
-			if(x > 30 && x < 200 && y > getHeight() - 70 && y < getHeight() - 20){
-				spaceship.setX(spaceship.x - 20);
+			if(x > 50 && x < (leftBtn.getWidth()+50)   &&   y > (getHeight() - leftBtn.getHeight() - 20) && y < getHeight() - 20){
+				spaceship.setX(spaceship.x - 20); // move left
 			}else
-			if(x > getWidth()-200 && x < getWidth()-30 && y > getHeight() - 70 && y < getHeight() - 20){
-				spaceship.setX(spaceship.x + 20);
+			if(x > (getWidth() - rightBtn.getWidth() -50) && x < getWidth()-50   &&   y > (getHeight() - rightBtn.getHeight() - 20) && y < getHeight() - 20){
+				spaceship.setX(spaceship.x + 20); // move right
 			}			
+		}
+		
+		if( (x >= getWidth()/2 - gotoStarData.getWidth()/2) && (x <= getWidth()/2 + gotoStarData.getWidth()/2) && (y >= 20) && (y <= 20 + gotoStarData.getHeight() )){
+			gameLoopThread.setRunning(false);
+			// start StarData Activity here
+			
 		}
 		
 		return true;		

@@ -16,6 +16,8 @@ public class ShipSprite extends Sprite {
 	}
 
 	public void update() {
+		//int w = gameview.getWidth(); // 768
+		
 		if (x > (gameview.getWidth() - this.width ) ) {
 			x = gameview.getWidth() - this.width;
 		}		

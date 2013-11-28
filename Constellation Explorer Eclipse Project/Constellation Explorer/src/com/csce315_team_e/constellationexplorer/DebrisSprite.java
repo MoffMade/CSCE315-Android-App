@@ -25,7 +25,8 @@ public class DebrisSprite extends Sprite {
 			Random rand = new Random(System.currentTimeMillis());
 			//int newX = rand.nextInt(690-this.width);
 			int i = rand.nextInt(3);
-			x = 10 + i*160;
+			//x = 10 + i*160;
+			x = (gameview.getWidth()/3 - this.width)/2 + i*(gameview.getWidth()/3);
 		}		
 		y += ySpeed;
 		
