@@ -8,8 +8,8 @@ import android.graphics.Canvas;
 public class Sprite {
 	protected int x = 0;
 	protected int y = 0;
-	protected int xSpeed = 20;
-	protected int ySpeed = 20;
+	protected int xSpeed = 40;
+	protected int ySpeed = 40;
 	protected GameView gameview;
 	protected Bitmap bmp;
 	protected int width;

@@ -1,10 +1,10 @@
 package com.csce315_team_e.constellationexplorer;
 
-import java.util.Currency;
 import java.util.Random;
 
 import android.graphics.Bitmap;
-//import com.csce315_team_e.constellationexplorer.Sprite;
+import android.graphics.BitmapFactory;
+
 
 public class DebrisSprite extends Sprite {
 	
@@ -27,8 +27,23 @@ public class DebrisSprite extends Sprite {
 			int i = rand.nextInt(3);
 			//x = 10 + i*160;
 			x = (gameview.getWidth()/3 - this.width)/2 + i*(gameview.getWidth()/3);
+			
+			int j = rand.nextInt(4);
+			if(j == 0){
+				this.bmp = BitmapFactory.decodeResource(gameview.getResources() , R.drawable.debris1 );
+				this.ySpeed = 35;
+			}else if(j == 1){
+				this.bmp = BitmapFactory.decodeResource(gameview.getResources(), R.drawable.debris2 );
+				this.ySpeed = 50;
+			}else if(j == 2){
+				this.bmp = BitmapFactory.decodeResource(gameview.getResources(), R.drawable.debris3 );
+				this.ySpeed = 45;
+			}else {
+				this.bmp = BitmapFactory.decodeResource(gameview.getResources(), R.drawable.debris4 );
+				this.ySpeed = 40;
+			}
 		}		
-		y += ySpeed;
+		y += ySpeed; // update y coordinate
 		
 	}
 
