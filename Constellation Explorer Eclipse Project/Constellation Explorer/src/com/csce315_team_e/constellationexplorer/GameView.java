@@ -13,15 +13,10 @@ import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import android.view.View;
-import android.view.ViewParent;
 
 public class GameView extends SurfaceView {
 
@@ -38,15 +33,16 @@ public class GameView extends SurfaceView {
 	private SoundPool soundpool;
 	private int exlodeSoundID;
 	private int flyingSoundID;
-	//Intent intent = new Intent(getContext(), StarDataActivity.class);
-	private int playtime = 500; 
+	private int playtime = 500;
+	private Context mContext;
+	private Star star;
 	//private boolean endGame = false;
 	//private int WindowHeight;
 	//private int WindowWidth;
-	private Context mContext;
-	private Star star;
 	
+
 	@SuppressLint("WrongCall")
+	//public GameView(Context context) {
 	public GameView(Context context, Star star) {
 		super(context);
 		
@@ -96,9 +92,7 @@ public class GameView extends SurfaceView {
 		
 		background = BitmapFactory.decodeResource(getResources(), R.drawable.outerspace1 );
 		
-		spaceship = new ShipSprite(this, BitmapFactory.decodeResource(getResources(), R.drawable.spaceship ));
-		
-		//spaceship.setY(getHeight()-200);
+		spaceship = new ShipSprite(this, BitmapFactory.decodeResource(getResources(), R.drawable.spaceship ));		
 		
 		debris1 = new DebrisSprite(this, BitmapFactory.decodeResource(getResources(), R.drawable.debris1 ));
 		debris1.setX(10);
@@ -113,7 +107,7 @@ public class GameView extends SurfaceView {
 
 			public void onLoadComplete(SoundPool soundpool, int sampleId, int status) {
 			}
-		}); // end of soundpoo.setOnLoadCompleteListener
+		}); // end of soundpool.setOnLoadCompleteListener
 		
 		exlodeSoundID = soundpool.load(this.getContext(),R.raw.explosion,1);
 		flyingSoundID = soundpool.load(this.getContext(),R.raw.flying,1);
@@ -122,11 +116,6 @@ public class GameView extends SurfaceView {
 			
 		/*debrises = new Vector<Sprite>();*/
 	}//end of GameView constructor
-
-	/*protected void startactivity(Intent intent) {
-		// TODO Auto-generated method stub
-		startactivity(intent);
-	}*/
 
 	@SuppressLint("WrongCall")
 	@Override
@@ -179,26 +168,29 @@ public class GameView extends SurfaceView {
 				// print Game Over
 				canvas.drawBitmap(gameover, getWidth()/2- gameover.getWidth()/2, getHeight()/2,null);			
 			}
-			if(spaceship.timeExploded == -12){						
+			if(spaceship.timeExploded == -12){ // END GAME						
 				gameLoopThread.setRunning(false);
 				
-				//intent.putExtra("current_star", star);
-				//startactivity(intent);
+				Intent intent = new Intent(mContext, StarMapActivity.class);
+		    	intent.putExtra("current_star", star);
+		    	mContext.startActivity(intent);
 				
-				//Intent intent = new Intent(getContext(), StarDataActivity.class);
-				//endGame = true;				
-				//startactivity(intent);
+				
 				
 			}
 		}else // still alive after n playing time
-			if(playtime <= 0){
-			//draw mission complete
+			if(playtime <= 0){ // MISSION COMPLETE
+			
 				canvas.drawBitmap(missionComplete, getWidth()/2- missionComplete.getWidth()/2, getHeight()/2,null);				
-				//endGame = true;
+				
 							
 		}
-		if(playtime == -1){			
-			gameLoopThread.setRunning(false);									
+		if(playtime == -7){			
+			gameLoopThread.setRunning(false);
+			
+			Intent intent = new Intent(mContext, StarDataActivity.class);
+	    	intent.putExtra("current_star", star);
+	    	mContext.startActivity(intent);
 			
 			//startactivity(intent);
 		}
@@ -237,9 +229,6 @@ public class GameView extends SurfaceView {
 	    	intent.putExtra("current_star", star);
 	    	mContext.startActivity(intent);
 			
-			// mInflater.inflate(R.layout.activity_game, null);
-			//setContentView(R.layout.activity_game);
-			 //setContentView();
 		}
 		
 		return true;		
