@@ -21,7 +21,8 @@ public class StarMapActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_star_map);
 		
-		String[] star_names = {"polaris","segin","Cassiopeia","Taurus","Pictor"};
+		//String[] star_names = {"polaris","segin","Cassiopeia","Taurus","Pictor"};
+		String[] star_names = {"polaris","segin","Acamar","Gienah","Heze"};
 		
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
