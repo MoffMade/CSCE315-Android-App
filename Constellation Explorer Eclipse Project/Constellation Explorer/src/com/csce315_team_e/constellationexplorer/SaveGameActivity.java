@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.Date;
 
 import org.xmlpull.v1.XmlSerializer;
 
@@ -24,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.util.Xml;
 import android.view.View;
@@ -49,7 +51,6 @@ public class SaveGameActivity extends Activity {
         	FileOutputStream saveFile = openFileOutput("saved_data", Context.MODE_APPEND);
             XmlSerializer output = Xml.newSerializer();
             StringWriter writer = new StringWriter();
-			Log.i("HAHAH","CHECK POINT 4");
 
             output.setOutput(writer);
             output.startTag(null,"saveData");
@@ -87,6 +88,13 @@ public class SaveGameActivity extends Activity {
             output.text(star.getMag());
             output.endTag(null, "mag");
             
+            output.startTag(null, "timeSaved");
+            
+            Date d = new Date();
+            CharSequence s  = DateFormat.format("MM-dd-yyyy hh:mm:ss", d.getTime());
+            output.text((String) s);
+            output.endTag(null, "timeSaved");
+            
             output.endTag(null,"object");
             output.endTag(null, "saveData");
             
@@ -96,8 +104,6 @@ public class SaveGameActivity extends Activity {
             saveFile.write(writer.toString().getBytes());
             saveFile.close();
             
-			Log.i("HAHAH","CHECK POINT 6");
-
         } catch (FileNotFoundException e) {
         	e.printStackTrace();
         } catch (IOException e) {

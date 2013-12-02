@@ -67,7 +67,9 @@ public class LoadGameActivity extends Activity {
 			
 			for (int i=0; i<star_list.size() ; i++) {
 				Log.i("Star: ",star_list.get(i).getStarName());
-				stars_name.add(star_list.get(i).getStarName());
+				Log.i("Time saved: ",star_list.get(i).getTimeSaved());
+				String savedGame = star_list.get(i).getTimeSaved() + " -- " +star_list.get(i).getStarName();
+				stars_name.add(savedGame);
 			}
 			//Set up list of saved games in the spinner1 widget
 			// Create an ArrayAdapter using the string array and a default spinner layout
@@ -146,7 +148,10 @@ public class LoadGameActivity extends Activity {
 						//if tag is mag
 						else if (tagName.equals("mag")) {
 							star.setMag(xpp.nextText());
-						}	
+						}
+						else if (tagName.equals("timeSaved")) {
+							star.setTimeSaved(xpp.nextText());
+						}
 						break;
 					
 					case XmlPullParser.END_TAG:

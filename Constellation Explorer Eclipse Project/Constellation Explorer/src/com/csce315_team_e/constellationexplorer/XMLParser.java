@@ -6,15 +6,10 @@ package com.csce315_team_e.constellationexplorer;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.io.StringReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
@@ -47,7 +42,6 @@ public class XMLParser extends AsyncTask<String, Void, String> {
 			Log.i("XML Parser link",url[0]);
 
 			DefaultHttpClient client = new DefaultHttpClient();
-			Log.i("XML Parser","CHECK POINT 3.4");
 			
 			HttpParams httpParameters = uri.getParams();
 	        // Set the timeout in milliseconds until a connection is established.
@@ -60,10 +54,7 @@ public class XMLParser extends AsyncTask<String, Void, String> {
 	        
 
 			HttpResponse response = client.execute(uri);
-			Log.i("XML Parser","CHECK POINT 3.5");
-
 			xml = EntityUtils.toString(response.getEntity());
-			Log.i("XML Parser","CHECK POINT 3.9");
 			Log.i("XML STRING",xml);
 
 			

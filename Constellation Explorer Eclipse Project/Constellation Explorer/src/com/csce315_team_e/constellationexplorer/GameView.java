@@ -13,10 +13,15 @@ import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import android.view.View;
+import android.view.ViewParent;
 
 public class GameView extends SurfaceView {
 
@@ -38,11 +43,16 @@ public class GameView extends SurfaceView {
 	//private boolean endGame = false;
 	//private int WindowHeight;
 	//private int WindowWidth;
+	private Context mContext;
+	private Star star;
 	
-
 	@SuppressLint("WrongCall")
-	public GameView(Context context) {
+	public GameView(Context context, Star star) {
 		super(context);
+		
+		this.mContext = context;
+		this.star = star;
+		
 		gameLoopThread = new GameLoopThread(this);
 		holder = getHolder();
 		holder.addCallback(new SurfaceHolder.Callback() {
@@ -223,6 +233,13 @@ public class GameView extends SurfaceView {
 			gameLoopThread.setRunning(false);
 			// start StarData Activity here
 			
+			Intent intent = new Intent(mContext, StarDataActivity.class);
+	    	intent.putExtra("current_star", star);
+	    	mContext.startActivity(intent);
+			
+			// mInflater.inflate(R.layout.activity_game, null);
+			//setContentView(R.layout.activity_game);
+			 //setContentView();
 		}
 		
 		return true;		

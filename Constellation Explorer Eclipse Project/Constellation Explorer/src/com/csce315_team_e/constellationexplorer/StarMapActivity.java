@@ -1,11 +1,13 @@
 package com.csce315_team_e.constellationexplorer;
 
+
+import java.util.Random;
+
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +21,8 @@ public class StarMapActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_star_map);
 		
+		String[] star_names = {"polaris","segin","Cassiopeia","Taurus","Pictor"};
+		
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         
@@ -30,13 +34,13 @@ public class StarMapActivity extends Activity {
 			 XMLParser getData = new XMLParser();
 			try {
 				
-				/*
-				 * The list of stars will be generated here 
-				 * will add private ArrayList<Star> to store
-				 * 
-				 * retrieve star info by getData.getStarInfo(name of the star);
-				 */
-				star = getData.getStarInfo("polaris");
+				// Pick a random star in the list to be the current star
+				Random r = new Random();
+				int rand =r.nextInt(5);
+				
+				star = getData.getStarInfo(star_names[rand]);
+				Log.i("Picked star: ",star.getStarName());
+
 			} catch (XmlPullParserException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

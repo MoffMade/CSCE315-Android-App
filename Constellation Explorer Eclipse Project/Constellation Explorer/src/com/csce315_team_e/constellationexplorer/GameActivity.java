@@ -19,17 +19,6 @@ public class GameActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		//comment out R.layout.activity_game to test with starDatamap (showing star info after clicking Magic button)
-		
-		
-		setContentView(new GameView(this));   //<---------
-		//setContentView(R.layout.activity_game);  //<---------
-		
-		
-		
-		// Show the Up button in the action bar.
-		setupActionBar();
-		
 		
 		Bundle data = getIntent().getExtras();
 		if (data != null) {
@@ -37,6 +26,15 @@ public class GameActivity extends Activity {
 		
 		Log.i("GAME ACTIVITY",star.getStarName());
 		}
+		
+  	
+		setContentView(new GameView(this,star));   //<---------
+		
+		//setContentView(R.layout.activity_game);  //<---------
+		// Show the Up button in the action bar.
+		setupActionBar();
+		
+	
 	}
 
 	/**

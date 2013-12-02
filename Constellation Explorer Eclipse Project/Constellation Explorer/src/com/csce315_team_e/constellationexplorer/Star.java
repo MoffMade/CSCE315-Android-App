@@ -16,7 +16,7 @@ public class Star extends Application implements Parcelable {
 	private String ra;
 	private String de;
 	private String mag;
-	
+	private String timeSaved;
 	public Star() {
 		
 	}
@@ -47,6 +47,9 @@ public class Star extends Application implements Parcelable {
 	public String getMag() {
 		return mag;
 	}
+	public String getTimeSaved(){
+		return timeSaved;
+	}
 	
 	public void setStarID(String val) {
 		this.star_id = val;
@@ -75,10 +78,13 @@ public class Star extends Application implements Parcelable {
 	public void setMag(String val) {
 		this.mag = val;
 	}
+	public void setTimeSaved(String val) {
+		this.timeSaved = val;
+	}
 
 	
     public Star(Parcel in){
-        String[] data = new String[9];
+        String[] data = new String[10];
 
         in.readStringArray(data);
         this.star_id = data[0];
@@ -90,6 +96,7 @@ public class Star extends Application implements Parcelable {
         this.ra = data[6];
         this.de = data[7];
         this.mag = data[8];
+        this.timeSaved = data[9];
     }
 
     public int describeContents(){
@@ -99,7 +106,7 @@ public class Star extends Application implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeStringArray(new String[] {this.star_id, this.star_type, this.name, this.catID, this.constellation,
-                                            this.constellationID, this.ra, this.de,this.mag});
+                                            this.constellationID, this.ra, this.de,this.mag,this.timeSaved});
     }
     public static final Parcelable.Creator<Star> CREATOR = new Parcelable.Creator<Star>() {
         public Star createFromParcel(Parcel in) {
