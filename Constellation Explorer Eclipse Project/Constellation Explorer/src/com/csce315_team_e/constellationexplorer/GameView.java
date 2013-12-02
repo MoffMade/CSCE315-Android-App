@@ -171,7 +171,8 @@ public class GameView extends SurfaceView {
 			if(spaceship.timeExploded == -12){ // END GAME						
 				gameLoopThread.setRunning(false);
 				
-				Intent intent = new Intent(mContext, StarMapActivity.class);
+				//Intent intent = new Intent(mContext, StarMapActivity.class);
+				Intent intent = new Intent(mContext, StarDataActivity.class);
 		    	intent.putExtra("current_star", star);
 		    	mContext.startActivity(intent);
 				
